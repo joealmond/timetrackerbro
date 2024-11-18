@@ -121,4 +121,14 @@ watch(
   },
   { deep: true },
 );
+
+async function getDateTimeData() {
+  return {
+      startDateTime: range.value.start,
+      endDateTime: range.value.end,
+  };
+}
+
+defineExpose({ getDateTimeData });
+
 </script>
