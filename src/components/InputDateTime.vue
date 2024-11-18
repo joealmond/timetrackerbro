@@ -70,9 +70,10 @@ function updateRules(
   const isToday = dayjs(newRange.end).isSame(dayjs(), 'day')
 
   const currentHour = isToday ? dayjs(newRange.end).hour() : undefined
+
   const maxMinutes = isToday
-    ? Math.round(dayjs(newRange.end).minute() / MINUTE_INTERVAL) * MINUTE_INTERVAL
-    : undefined
+    ? Math.round(dayjs().minute() / MINUTE_INTERVAL) * MINUTE_INTERVAL
+    : Math.round(dayjs(newRange.end).minute() / MINUTE_INTERVAL) * MINUTE_INTERVAL
 
   rulesStart.hours = isToday ? { max: currentHour } : {}
   rulesEnd.hours = isToday ? { max: currentHour } : {}
@@ -80,7 +81,11 @@ function updateRules(
   rulesEnd.minutes = { max: maxMinutes, interval: MINUTE_INTERVAL }
 
   if (isToday) {
-    emit('update-date-to-present')
+    if (currentHour !== undefined) {
+      emit('show-message', MESSAGE.LOG_HOURS(currentHour, maxMinutes))
+    } else {
+      console.error('currentHour is undefined unexpectedly!')
+    }
   }
 }
 
