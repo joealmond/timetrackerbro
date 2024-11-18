@@ -63,6 +63,7 @@ function checkRange(newRangeStart: Date, newRangeEnd: Date): void {
   const startTime = dayjs(newRangeStart);
   const endTime = dayjs(newRangeEnd);
   if (endTime.diff(startTime, 'minute') > MAX_HOURS * MINUTES_IN_HOUR) {
+    // TODO: implement ui solution for warnings
     alert('The maximum range is limited to 12 hours.');
     nextTick(() => {
       range.value = {
@@ -80,11 +81,10 @@ function updateRules(
 ): void {
   const isToday = dayjs(newRange.end).isSame(dayjs(), 'day');
   const endHour = dayjs(newRange.end).hour();
-  const endMinute = dayjs(newRange.end).minute();
 
   const maxMinutes = isToday
     ? Math.round(dayjs().minute() / MINUTE_INTERVAL) * MINUTE_INTERVAL
-    : 59; // Allow all minutes if not today
+    : 59;
 
   rulesStart.hours = isToday ? { max: endHour } : {};
   rulesEnd.hours = isToday ? { max: endHour } : {};
@@ -94,7 +94,6 @@ function updateRules(
   if (isToday) {
     emit('show-message', MESSAGE.LOG_HOURS(endHour, maxMinutes));
   } else {
-    // Calculate hours and minutes for other days
     const hours = dayjs(newRange.end).diff(dayjs(newRange.start), 'hours');
     const minutes = dayjs(newRange.end).diff(dayjs(newRange.start), 'minutes') % 60;
     emit('show-message', MESSAGE.LOG_HOURS(hours, minutes));
