@@ -20,9 +20,19 @@ const MAX_HOURS = 12
 const MINUTE_INTERVAL = 15
 const MESSAGE = {
   NO_SELECTION: 'No selection..',
-  LOG_HOURS: (hours: number, minutes: number) =>
-    minutes !== 0 ? `Log ${hours} hours and ${minutes} minutes?` : `Log ${hours} hours?`,
-}
+  LOG_HOURS: (hours: number, minutes: number) => {
+    if (hours === 0 && minutes === 0) {
+      return MESSAGE.NO_SELECTION;
+    }
+    if (hours > 0 && minutes > 0) {
+      return `Log ${hours} hours and ${minutes} minutes?`;
+    }
+    if (hours > 0) {
+      return `Log ${hours} hours?`;
+    }
+    return `Log ${minutes} minutes?`;
+  },
+};
 
 const emit = defineEmits<Emits>()
 
