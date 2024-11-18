@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import SimpleMessage from '../components/SimpleMessage.vue';
+import InputForm from '../components/InputForm.vue';
 </script>
 
 <template>
   <main>
-    <SimpleMessage msg="Hello!"/>
+    <InputForm />
   </main>
 </template>
 

@@ -1,6 +1,18 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": [
+    "env.d.ts",
+    "src/**/*",
+    "src/**/*.vue",
+    "BKP/src/compoents/HelloWorld.vue",
+    "BKP/src/compoents/InputDateTime0.vue",
+    "BKP/src/compoents/InputDateTime1.vue",
+    "BKP/src/compoents/InputMins.vue",
+    "BKP/src/compoents/InputHours.vue",
+    "BKP/src/compoents/InputTime copy.vue",
+    "BKP/src/compoents/InputHoursAndMins.vue",
+    "src/components/SimpleMessage.vue"
+, "BKP/utils"  ],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "composite": true,

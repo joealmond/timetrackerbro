@@ -6,11 +6,10 @@ import SimpleMessage from '../components/SimpleMessage.vue'
 
 <template>
   <main class="about">
-    <SimpleMessage msg="This app was created as part of my application for a job at Motibro (motibro.com)." />
+    <SimpleMessage
+      msg="This app was created as part of my application for a job at Motibro (motibro.com)."
+    />
   </main>
-
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
