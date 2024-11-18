@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import InputForm from '../components/InputForm.vue';
+import Frame from '../components/Frame.vue';
 </script>
 
 <template>
   <main>
-    <InputForm />
+    <Frame />
   </main>
 </template>
 

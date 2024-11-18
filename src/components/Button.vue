@@ -24,10 +24,13 @@ defineEmits<{
       'font-medium',
       'rounded-md',
       'transition',
-      'px-4 py-1 text-base',
-      variant === 'primary' ? 'bg-green-custom hover:bg-green-custom-dark text-white' : '',
-      variant === 'secondary' ? 'bg-green-800 hover:bg-green-900 text-white' : '',
-      variant === 'danger' ? 'bg-red-500 hover:bg-red-700 text-white' : '',
+      'px-4 py-3 text-base',
+      'border-4',
+      'text-white',
+      'forn-bold',
+      variant === 'primary' ? 'bg-green-custom hover:bg-green-custom-dark' : '',
+      variant === 'secondary' ? 'bg-green-800 hover:bg-green-900' : '',
+      variant === 'danger' ? 'bg-red-500 hover:bg-red-700' : '',
     ]"
     @click="$emit('click')"
   >

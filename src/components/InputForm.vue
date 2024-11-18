@@ -1,8 +1,21 @@
 <script setup lang="ts">
-import InputTimeBlock from './InputTimeBlock.vue'
+import InputDateTime from './InputDateTime.vue';
+import DisplayBlock from './DisplayMessageBlock.vue';
+import Button from './Button.vue';
+import { ref } from 'vue';
+
+const message = ref('');
+
+function showMessage(msg: string) {
+  message.value = msg;
+}
+
 </script>
+
 <template>
-  <div class="bg-white/10 p-4 rounded-md shadow-sm">
-    <InputTimeBlock />
+  <div class="bg-white/20 p-4 rounded-md shadow-sm">
+    <InputDateTime @show-message="showMessage"/>
+    <DisplayBlock :msg="message" />
+    <Button label="Submit" type="submit" class="w-full"/>
   </div>
 </template>
